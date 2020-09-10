@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../server')
 
-const Painting = db.define('student', {
+const Painting = db.paintings.define('painting', {
     name: {
         type: Sequelize.STRING,
         allowNull: false

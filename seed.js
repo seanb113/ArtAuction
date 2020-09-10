@@ -1,7 +1,7 @@
 const db = require('./server')
 const Paintings = require('./models/paintings')
 
-const Paintings = [
+const All_Paintings = [
     {
         name:"Mona Lisa",
     
@@ -55,7 +55,7 @@ const Paintings = [
     },
     
     {
-        name:"Guernica",
+        name:"Guernico",
 
         artist:"Pablo Picasso",
 
@@ -68,7 +68,7 @@ const Paintings = [
 ]
 
 const seed = () => {
-    return Paintings.bulkCreate(paintings)
+    return Paintings.bulkCreate(All_Paintings)
 }
 
 seed()
