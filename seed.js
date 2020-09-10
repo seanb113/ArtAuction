@@ -1,7 +1,13 @@
-const db = require('./server')
+const db = require('./models/index')
 const Paintings = require('./models/paintings')
 
-const All_Paintings = [
+  
+exports.seed = function(knex, Promise) {
+  // Deletes ALL existing entries
+  return knex('paintings').del()
+    .then(function () {
+      // Inserts seed entries
+      return knex('paintings').insert([
     {
         name:"Mona Lisa",
     
@@ -65,13 +71,7 @@ const All_Paintings = [
 
         painted_in:"1937"
     }
-]
 
-const seed = () => {
-    return Paintings.bulkCreate(All_Paintings)
-}
-
-seed()
-.then(() => {
-process.exit()
-})
+      ]);
+    });
+};

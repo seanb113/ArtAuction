@@ -1,6 +1,7 @@
 const express = require('express')
 const Sequelize = require('sequelize')
-const sequelize = require('sequelize')
+const pkg = require('./package.json')
+var knex = require('./knexfile')
 require('dotenv').config()
 
 const helmet = require('helmet')
@@ -45,9 +46,9 @@ app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
 })
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
 
-    db.paintings = require('./models/paintings.js')(sequelize, Sequelize);   
+    // db.paintings = require('./models/paintings.js')(sequelize, Sequelize);   
 
 module.exports = db
