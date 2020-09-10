@@ -1,5 +1,6 @@
 const getTableData = (req, res, db) => {
-  db.select('*').from('testtable1')
+  console.log(req, res, db)
+  db.select('*').from('paintings')
     .then(items => {
       if(items.length){
         res.json(items)
@@ -7,42 +8,20 @@ const getTableData = (req, res, db) => {
         res.json({dataExists: 'false'})
       }
     })
-    .catch(err => res.status(400).json({dbError: 'db error'}))
-}
-
-const postTableData = (req, res, db) => {
-  const { first, last, email, phone, location, hobby } = req.body
-  const added = new Date()
-  db('testtable1').insert({first, last, email, phone, location, hobby, added})
-    .returning('*')
-    .then(item => {
-      res.json(item)
-    })
-    .catch(err => res.status(400).json({dbError: 'db error'}))
+    .catch(err => console.log(err))
 }
 
 const putTableData = (req, res, db) => {
-  const { id, first, last, email, phone, location, hobby } = req.body
-  db('testtable1').where({id}).update({first, last, email, phone, location, hobby})
+  const {id, likes} = req.body
+  db('paintings').where({id}).update({likes})
     .returning('*')
     .then(item => {
       res.json(item)
     })
-    .catch(err => res.status(400).json({dbError: 'db error'}))
-}
-
-const deleteTableData = (req, res, db) => {
-  const { id } = req.body
-  db('testtable1').where({id}).del()
-    .then(() => {
-      res.json({delete: 'true'})
-    })
-    .catch(err => res.status(400).json({dbError: 'db error'}))
+    .catch(err => console.log(err))
 }
 
 module.exports = {
   getTableData,
-  postTableData,
-  putTableData,
-  deleteTableData
+  putTableData
 }
