@@ -17,7 +17,8 @@
     "jade": "~1.11.0",
     "knex": "^0.21.5",
     "morgan": "^1.10.0",
-    "pg": "^8.3.3"
+    "pg": "^8.3.3",
+    "ssh2-sftp-client": "^5.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
